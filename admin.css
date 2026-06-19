@@ -1,0 +1,350 @@
+:root {
+  --admin-bg: #0c1330;
+  --admin-surface: rgba(19, 30, 63, 0.78);
+  --admin-surface-strong: rgba(15, 24, 52, 0.92);
+  --admin-text: #f7f8fb;
+  --admin-muted: #b8c2df;
+  --admin-border: rgba(72, 208, 204, 0.18);
+  --admin-primary: #48d0cc;
+  --admin-danger: #ff7d7d;
+  --admin-danger-bg: rgba(255, 125, 125, 0.12);
+  --admin-input-bg: rgba(10, 18, 41, 0.78);
+  --admin-shadow: 0 30px 80px rgba(2, 8, 24, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.admin-body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: var(--admin-text);
+  background:
+    radial-gradient(circle at top right, rgba(72, 208, 204, 0.12), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(72, 208, 204, 0.08), transparent 22%),
+    linear-gradient(180deg, #0c1330 0%, #091024 100%);
+}
+
+.admin-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 36px 0 56px;
+}
+
+.admin-header,
+.admin-panel,
+.admin-projects,
+.admin-login-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: 28px;
+  box-shadow: var(--admin-shadow);
+  backdrop-filter: blur(22px);
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+  padding: 28px 34px;
+}
+
+.admin-header h1,
+.admin-panel h2,
+.admin-projects h2,
+.admin-login-card h1 {
+  margin: 0 0 10px;
+  color: var(--admin-text);
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  line-height: 1;
+}
+
+.admin-panel h2,
+.admin-projects h2,
+.admin-login-card h1 {
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+}
+
+.admin-header p,
+.admin-panel p,
+.admin-projects p,
+.admin-login-card p,
+.admin-hint {
+  margin: 0;
+  color: var(--admin-muted);
+  line-height: 1.65;
+}
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) 1.35fr;
+  gap: 28px;
+}
+
+.admin-panel,
+.admin-projects {
+  padding: 30px;
+}
+
+.admin-form {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-field {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-field label {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+
+.admin-field input,
+.admin-field textarea {
+  width: 100%;
+  border: 1px solid rgba(107, 133, 199, 0.22);
+  border-radius: 18px;
+  padding: 16px 18px;
+  font: inherit;
+  color: var(--admin-text);
+  background: var(--admin-input-bg);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.admin-field input::placeholder,
+.admin-field textarea::placeholder {
+  color: rgba(184, 194, 223, 0.68);
+}
+
+.admin-field input:focus,
+.admin-field textarea:focus {
+  border-color: rgba(72, 208, 204, 0.55);
+  box-shadow: 0 0 0 4px rgba(72, 208, 204, 0.12);
+}
+
+.admin-field textarea {
+  min-height: 170px;
+  resize: vertical;
+}
+
+.admin-field--inline {
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.admin-checks {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.admin-checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--admin-text);
+  font-weight: 500;
+}
+
+.admin-checks input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--admin-primary);
+}
+
+.admin-actions,
+.admin-header__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button,
+.admin-button {
+  border: 1px solid transparent;
+  border-radius: 16px;
+  padding: 14px 24px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover,
+.admin-button:hover {
+  transform: translateY(-1px);
+}
+
+.admin-button,
+button[type="submit"] {
+  color: #0c2033;
+  background: var(--admin-primary);
+  box-shadow: 0 18px 35px rgba(72, 208, 204, 0.18);
+}
+
+.admin-button:hover,
+button[type="submit"]:hover {
+  filter: brightness(1.03);
+}
+
+button[type="button"] {
+  color: var(--admin-primary);
+  background: rgba(72, 208, 204, 0.08);
+  border-color: rgba(72, 208, 204, 0.16);
+}
+
+button.danger,
+[data-logout] {
+  color: var(--admin-danger);
+  background: var(--admin-danger-bg);
+  border-color: rgba(255, 125, 125, 0.18);
+}
+
+.admin-status {
+  min-height: 28px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.admin-project-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.admin-project-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid rgba(72, 208, 204, 0.14);
+  border-radius: 24px;
+  padding: 22px;
+  background: var(--admin-surface-strong);
+}
+
+.admin-project-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.95rem;
+  line-height: 1.15;
+  color: var(--admin-text);
+}
+
+.admin-project-card p {
+  margin: 0 0 14px;
+}
+
+.admin-project-card__meta {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  color: var(--admin-muted);
+  font-size: 1rem;
+}
+
+.admin-project-card__actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.admin-project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.admin-project-card__tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(72, 208, 204, 0.12);
+  background: rgba(10, 18, 41, 0.55);
+  color: var(--admin-text);
+  font-size: 0.96rem;
+  font-weight: 500;
+}
+
+.admin-login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.admin-login-card {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  padding: 42px;
+}
+
+.admin-hint {
+  margin-top: 16px;
+}
+
+
+strong {
+  color: var(--admin-text);
+}
+
+@media (max-width: 960px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-project-card {
+    flex-direction: column;
+  }
+
+  .admin-project-card__actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .admin-shell {
+    width: min(100% - 18px, 1180px);
+    padding-top: 18px;
+  }
+
+  .admin-header,
+  .admin-panel,
+  .admin-projects,
+  .admin-login-card {
+    border-radius: 24px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+
+  .admin-panel,
+  .admin-projects,
+  .admin-login-card {
+    padding: 24px;
+  }
+
+  .admin-field--inline {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-project-card h3 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css">
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell" data-admin-dashboard>
+      <section class="admin-header">
+        <div>
+          <h1>Project Dashboard</h1>
+        </div>
+
+        <div class="admin-header__actions">
+          <button type="button" data-logout>Log Out</button>
+        </div>
+      </section>
+
+      <section class="admin-layout">
+        <article class="admin-panel">
+          <h2 data-form-title>Add Project</h2>
+
+          <form class="admin-form" data-project-form>
+            <input type="hidden" name="id">
+
+            <div class="admin-field">
+              <label for="title">Project Title</label>
+              <input id="title" name="title" type="text" required>
+            </div>
+
+            <div class="admin-field">
+              <label for="description">Description</label>
+              <textarea id="description" name="description" required></textarea>
+            </div>
+
+            <div class="admin-field admin-field--inline">
+              <div class="admin-field">
+                <label for="tech_stack">Tech Stack</label>
+                <input id="tech_stack" name="tech_stack" type="text" placeholder="HTML, CSS, JavaScript">
+              </div>
+            </div>
+
+            <div class="admin-actions">
+              <button type="submit">Save Project</button>
+              <button type="button" data-reset-project-form hidden>Cancel Edit</button>
+            </div>
+
+            <p class="admin-status" data-project-status></p>
+          </form>
+        </article>
+
+        <article class="admin-projects">
+          <h2>Existing Projects</h2>
+          <div class="admin-project-list" data-admin-project-list></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+  </body>
+</html>
